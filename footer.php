@@ -14,12 +14,12 @@
           <h4>Hizmetler</h4>
 
           <?php
-          $sorgu2 = $db->prepare('select * from sayfalar order by baslik desc');
+          $sorgu2 = $db->prepare("select * from sayfalar where sayfaturu = 'altsayfa' order by baslik desc");
           $sorgu2->execute();
 
           if ($sorgu2->rowCount()) {
             foreach ($sorgu2 as $satir2) {
-              echo '<a href="sample.php?id=' . $satir2['id'] . '" style="font-size:14px;">' . $satir2['baslik'] . '</a><br>';
+              echo '<a href="samplepage.php?id=' . $satir2['id'] . '" style="font-size:14px;">' . $satir2['baslik'] . '</a><br>';
             }
           }
           ?>

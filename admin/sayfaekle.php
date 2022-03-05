@@ -41,6 +41,13 @@
                     <input type="text" name="seotitle" class="form-control" placeholder="Sayfa Başlığı Girin">
                 </div>
                 <div class="form-group">
+                    <select name="sayfaturu" class="form-control">
+                        <option value="">Sayfa Türü</option>
+                        <option value="ustsayfa">Üst Sayfa</option>
+                        <option value="altsayfa">Alt Sayfa</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <input type="date" name="tarih" class="form-control">
                 </div>
                 <div class="form-group">
@@ -57,10 +64,11 @@
                     $fotoalt = $_POST['fotoalt'];
                     $seotitle = $_POST['seotitle'];
                     $tarih = $_POST['tarih'];
+                    $sayfaturu = $_POST['sayfaturu'];
 
                     if (move_uploaded_file($_FILES['foto']['tmp_name'], $yuklenecekfoto)) {
-                        $sorgu = $db -> prepare('insert into sayfalar(baslik,icerik,meta,foto,durum,fotoalt,seotitle,tarih) values(?,?,?,?,?,?,?,?)');
-                        $sorgu -> execute(array($baslik,$icerik,$meta,$yuklenecekfoto,$durum,$fotoalt,$seotitle,$tarih));
+                        $sorgu = $db -> prepare('insert into sayfalar(baslik,icerik,meta,foto,durum,fotoalt,seotitle,tarih,sayfaturu) values(?,?,?,?,?,?,?,?,?)');
+                        $sorgu -> execute(array($baslik,$icerik,$meta,$yuklenecekfoto,$durum,$fotoalt,$seotitle,$tarih,$sayfaturu));
 
                         if($sorgu -> rowCount()){
                             echo '<div class="alert alert-success">Kayıt Eklendi</div>';

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
 
 require_once('baglan.php');
 
-$sorgu_yorum = $db ->prepare('select count(*) from yorumlar where adminonay=0 ');
+$sorgu_yorum = $db->prepare('select count(*) from yorumlar where adminonay=0 ');
 $sorgu_yorum->execute();
 $yeni_yorum = $sorgu_yorum->fetchColumn();
 
@@ -53,7 +53,18 @@ $yeni_yorum = $sorgu_yorum->fetchColumn();
             <li><a href="ebultenuye.php">E-Bülten Üyeler</a></li>
             <li><a href="sidebar.php">Sidebar Ayarlar</a></li>
             <li><a href="reklam.php">Reklam Ayarları</a></li>
-            <li><a href="ayarlar.php">Ayarlar</a></li>
+            <li>
+              <div class="dropdown">
+                <a class="btn btn-link dropdown-toggle p-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                  Ayarlar
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item text-dark" href="ayarlar.php" >Site Ayarları</a>
+                  <a class="dropdown-item text-dark" href="nitelik.php">Nitelik Ayarları</a>
+                </div>
+              </div>
+            </li>
+
             <li><a href="logout.php">Çıkış</a></li>
           </ul>
         </div>
