@@ -45,6 +45,18 @@ $yeni_yorum = $sorgu_yorum->fetchColumn();
           <img src="../img/ari-bilgi-beyaz.png" class="img-fluid">
           <ul class="p-0 mt-4">
             <li><a href="dashboard.php">Başlangıç</a></li>
+            <li>
+              <div class="dropdown">
+                <a class="btn btn-link dropdown-toggle p-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                  Ana Sayfa
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item text-dark" href="banner.php" >Banner Düzenle</a>
+                  <a class="dropdown-item text-dark" href="ozellikler.php">Özellikler</a>
+                  <a class="dropdown-item text-dark" href="seoanaliz.php">Seo Analiz</a>
+                </div>
+              </div>
+            </li>
             <li><a href="sayfalar.php">Sayfalar</a></li>
             <li><a href="yazilar.php">Yazılar</a></li>
             <li><a href="yorumlar.php">Yorumlar</a> <small class="text-white"><span class="badge badge-danger"><?php echo $yeni_yorum; ?></span></small></li>
