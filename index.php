@@ -1,16 +1,23 @@
 <?php require_once('header.php'); ?>
 
 <!-- Banner Section Start -->
+
+<?php
+$sorgu_banner = $db->prepare('select * from banner order by id desc limit 1');
+$sorgu_banner->execute();
+$satir_banner = $sorgu_banner->fetch();
+?>
+
 <section id="indexbanner" class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h1 class="display-4">Buraya Başlık Gelecek</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, asperiores veniam ea rem labore ut facere architecto enim alias eaque!</p>
-                <a href="iletisim.php"> <button class="btn btn-purple">Teklif Alın</button> </a>
+            <div class="col-md-6 my-auto">
+                <h1 class="display-4"><?php echo $satir_banner['baslik']; ?></h1>
+                <p><?php echo $satir_banner['aciklama']; ?></p>
+                <a href="tel:+9<?php echo $satir_banner['telefon']; ?>"> <button class="btn btn-purple">Teklif Alın</button> </a>
             </div>
             <div class="col-md-6 text-center">
-                Buraya Görsel Gelecek
+                <img src="<?php echo substr($satir_banner['bannerfoto'], 3); ?>" alt="<?php echo $satir_banner['fotoalt']; ?>" class="w-75">
             </div>
         </div>
     </div>
@@ -21,33 +28,49 @@
 <section id="indexHizmetler" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="" alt="">
-                        <h2 class="lead">Hizmet Başlığı Gelecek</h2>
-                        <p>Buraya Kısa Açıklama</p>
-                        <a href=""><button class="btn btn-purple">Daha Fazla Bilgi</button></a>
+            <?php
+            $sorgu_hizmetler = $db->prepare('select * from sayfalar where kategori = "hizmet" order by baslik desc');
+            $sorgu_hizmetler->execute();
+
+            if ($sorgu_hizmetler->rowCount()) {
+                foreach ($sorgu_hizmetler as $satir_hizmetler) {
+            ?>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="<?php echo substr($satir_hizmetler['foto'], 3); ?>" alt="<?php echo $satir_hizmetler['fotoalt']; ?>" class="card-img-top">
+                                <h2 class="lead text-center mt-3"><?php echo $satir_hizmetler['baslik']; ?></h2>
+                                <p><?php echo substr($satir_hizmetler['icerik'], 0, 90); ?></p>
+                                <a href="samplepage.php?id=<?php echo $satir_hizmetler['id']; ?>"><button class="btn btn-purple">Daha Fazla Bilgi</button></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </section>
 <!-- Hizmetler Section End -->
 
 <!-- Hakkımda Section Start  -->
+<?php
+$sorgu_hakkimda = $db->prepare('select * from sayfalar where baslik = "Hakkımda" order by id desc limit 1');
+$sorgu_hakkimda->execute();
+$satir_hakkimda = $sorgu_hakkimda->fetch();
+?>
 <section id="indexHakkimda" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h3 class="lead">Hakkımda</h3>
-                <span>Buraya Slogan Gelecek</span>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque voluptates officiis ea iste tempora ad odio accusantium quisquam impedit libero, repellendus animi? Harum, assumenda qui.</p>
+            <div class="col-md-6 my-auto">
+                <h3><?php echo $satir_hakkimda['baslik']; ?></h3>
+                <p><?php echo $satir_banner['aciklama']; ?></p>
+                <p><?php echo $satir_hakkimda['icerik']; ?></p>
                 <a href="hakkimda.php"><button class="btn btn-purple">Devamını Okuyun</button></a>
             </div>
-            <div class="col-md-6">
-                buraya Görsel gelecek
+            <div class="col-md-6 text-center">
+                <img src="<?php echo substr($satir_hakkimda['foto'], 3); ?>" alt="<?php echo $satir_hakkimda['fotoalt']; ?>" class="w-75">
             </div>
         </div>
     </div>
@@ -58,11 +81,24 @@
 <section id="ozellikler" class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <img src="" alt="">
-                <h3 class="lead">Özellik Başlığı</h3>
-                <p>Kısa Açıklama gelecek</p>
-            </div>
+
+            <?php
+
+            $sorgu_ozellik = $db->prepare('select * from ozellikler order by id asc limit 4');
+            $sorgu_ozellik->execute();
+
+            if ($sorgu_ozellik->rowCount()) {
+                foreach ($sorgu_ozellik as $satir_ozellik) {
+            ?>
+                    <div class="col-md-3 text-center">
+                        <span style="font-size:42px;"><?php echo $satir_ozellik['ikon']; ?></span>
+                        <h3 class="lead"><?php echo $satir_ozellik['baslik']; ?></h3>
+                        <p><?php echo $satir_ozellik['icerik']; ?></p>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </section>
