@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 05 Mar 2022, 11:35:31
--- Sunucu sürümü: 5.7.36
--- PHP Sürümü: 7.4.26
+-- Anamakine: 127.0.0.1
+-- Üretim Zamanı: 13 Mar 2022, 12:18:18
+-- Sunucu sürümü: 10.4.22-MariaDB
+-- PHP Sürümü: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,9 +27,8 @@ SET time_zone = "+00:00";
 -- Tablo için tablo yapısı `ayarlar`
 --
 
-DROP TABLE IF EXISTS `ayarlar`;
-CREATE TABLE IF NOT EXISTS `ayarlar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ayarlar` (
+  `id` int(11) NOT NULL,
   `adres` varchar(200) NOT NULL,
   `telefon` varchar(15) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -45,9 +44,8 @@ CREATE TABLE IF NOT EXISTS `ayarlar` (
   `analitik` text NOT NULL,
   `konsol` text NOT NULL,
   `pixel` text NOT NULL,
-  `copy` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `copy` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `ayarlar`
@@ -59,17 +57,37 @@ INSERT INTO `ayarlar` (`id`, `adres`, `telefon`, `email`, `harita`, `tanitim`, `
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL,
+  `baslik` varchar(100) NOT NULL,
+  `aciklama` varchar(200) NOT NULL,
+  `telefon` varchar(12) NOT NULL,
+  `bannerfoto` varchar(100) NOT NULL,
+  `fotoalt` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `banner`
+--
+
+INSERT INTO `banner` (`id`, `baslik`, `aciklama`, `telefon`, `bannerfoto`, `fotoalt`) VALUES
+(1, 'Arı Bilişim Dijital Hizmetler', 'Hızlı, Kaliteli ve Güvenli Hizmet için Arı Bilişim Her Zaman Yanınızda', '05555555555', '../img/dijital-hizmetler-500x500.png', 'Arı Bilişim Banner');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `blog`
 --
 
-DROP TABLE IF EXISTS `blog`;
-CREATE TABLE IF NOT EXISTS `blog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
   `foto` varchar(150) NOT NULL,
   `baslik` varchar(200) NOT NULL,
-  `icerik` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `icerik` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `blog`
@@ -85,15 +103,13 @@ INSERT INTO `blog` (`id`, `foto`, `baslik`, `icerik`) VALUES
 -- Tablo için tablo yapısı `deneme`
 --
 
-DROP TABLE IF EXISTS `deneme`;
-CREATE TABLE IF NOT EXISTS `deneme` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `deneme` (
+  `id` int(11) NOT NULL,
   `kadi` varchar(25) NOT NULL,
   `isim` varchar(30) NOT NULL,
   `telefon` varchar(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `email` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `deneme`
@@ -111,12 +127,10 @@ INSERT INTO `deneme` (`id`, `kadi`, `isim`, `telefon`, `email`) VALUES
 -- Tablo için tablo yapısı `ebulten`
 --
 
-DROP TABLE IF EXISTS `ebulten`;
-CREATE TABLE IF NOT EXISTS `ebulten` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ebulten` varchar(150) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+CREATE TABLE `ebulten` (
+  `id` int(11) NOT NULL,
+  `ebulten` varchar(150) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `ebulten`
@@ -134,14 +148,12 @@ INSERT INTO `ebulten` (`id`, `ebulten`) VALUES
 -- Tablo için tablo yapısı `kategoriler`
 --
 
-DROP TABLE IF EXISTS `kategoriler`;
-CREATE TABLE IF NOT EXISTS `kategoriler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `kategoriler` (
+  `id` int(11) NOT NULL,
   `katadi` varchar(25) NOT NULL,
   `katmeta` varchar(160) NOT NULL,
-  `tarih` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `tarih` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `kategoriler`
@@ -159,16 +171,14 @@ INSERT INTO `kategoriler` (`id`, `katadi`, `katmeta`, `tarih`) VALUES
 -- Tablo için tablo yapısı `mesajlar`
 --
 
-DROP TABLE IF EXISTS `mesajlar`;
-CREATE TABLE IF NOT EXISTS `mesajlar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mesajlar` (
+  `id` int(11) NOT NULL,
   `adiniz` varchar(25) NOT NULL,
   `soyadiniz` varchar(50) NOT NULL,
   `email` varchar(150) NOT NULL,
   `konu` varchar(25) NOT NULL,
-  `mesaj` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `mesaj` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `mesajlar`
@@ -185,21 +195,42 @@ INSERT INTO `mesajlar` (`id`, `adiniz`, `soyadiniz`, `email`, `konu`, `mesaj`) V
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `ozellikler`
+--
+
+CREATE TABLE `ozellikler` (
+  `id` int(11) NOT NULL,
+  `baslik` varchar(50) NOT NULL,
+  `icerik` varchar(150) NOT NULL,
+  `ikon` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `ozellikler`
+--
+
+INSERT INTO `ozellikler` (`id`, `baslik`, `icerik`, `ikon`) VALUES
+(1, '7/24 Teknik Hizmet', 'Tüm Teknik Destek İhtiyaçlarınız için 7/24 Hizmetinizdeyim', '<i class=\'bi bi-clock\'></i>'),
+(2, 'Hızlı ve Kaliteli Hizmet', 'Tüm Dijital Süreçlerde Hızlı ve Kaliteli Hizmet Alacaksınız', '<i class=\'bi bi-speedometer\'></i>'),
+(3, 'Ücretsiz Danışmalık', 'Dijital Projeleriniz Hakkında Ücretsiz Olarak Danışmanlık Alabilirsiniz', '<i class=\'bi bi-info-circle\'></i>'),
+(4, 'Güvenilir Hizmet', 'Proje Süreçlerinde Karşılık Anlaşmaya Tam Uyumlu Hizmet', '<i class=\'bi bi-shield-check\'></i>');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `reklam`
 --
 
-DROP TABLE IF EXISTS `reklam`;
-CREATE TABLE IF NOT EXISTS `reklam` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reklam` (
+  `id` int(11) NOT NULL,
   `gorsel` varchar(200) NOT NULL,
   `link` varchar(200) NOT NULL,
   `reklamalani` varchar(30) NOT NULL,
   `ucret` varchar(10) NOT NULL,
   `baslangic` varchar(10) NOT NULL,
   `bitis` varchar(10) NOT NULL,
-  `firma` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `firma` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `reklam`
@@ -215,9 +246,8 @@ INSERT INTO `reklam` (`id`, `gorsel`, `link`, `reklamalani`, `ucret`, `baslangic
 -- Tablo için tablo yapısı `sayfalar`
 --
 
-DROP TABLE IF EXISTS `sayfalar`;
-CREATE TABLE IF NOT EXISTS `sayfalar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sayfalar` (
+  `id` int(11) NOT NULL,
   `baslik` varchar(60) NOT NULL,
   `icerik` text NOT NULL,
   `meta` varchar(160) NOT NULL,
@@ -227,18 +257,18 @@ CREATE TABLE IF NOT EXISTS `sayfalar` (
   `seotitle` varchar(60) NOT NULL,
   `tarih` varchar(11) NOT NULL,
   `sayfaturu` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `kategori` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `sayfalar`
 --
 
-INSERT INTO `sayfalar` (`id`, `baslik`, `icerik`, `meta`, `foto`, `durum`, `fotoalt`, `seotitle`, `tarih`, `sayfaturu`) VALUES
-(1, 'Web Tasarım Hizmeti', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n', 'Kaliteli, Mobil Uyumlu Web Tasarım ve Kodlama Hizmeti için 7/24 Proje Üretimi.', '../img/web-tasarim-hizmeti-1000x667.jpg', 'yayinlandi', 'Web Tasarım Hizmeti', 'Arı Bilişim | Web Tasarım Hizmeti', '2022-01-23', 'altsayfa'),
-(2, 'Dijital Pazarlama Hizmeti', '<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n', 'Dijital Pazarlama hizmetimiz ile Dijital Dünyada Her Zaman Görünür Olun.', '../img/grafik-tasarim-hizmeti-330x220.jpg', 'yayinlandi', 'Dijital Pazarlama Hizmeti', 'Arı Bilişim | Dijital Pazarlama Hizmeti', '2022-01-29', 'altsayfa'),
-(3, 'Grafik Tasarım Hizmeti', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n', 'Basılı ve Dijital Tasarımlarınız için Arı Bilişim Her Zaman Yanınızda', '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'yayinlandi', 'Grafik Tasarım Hizmeti', 'Arı Bilişim | Grafik Tasarım Hizmeti', '2022-01-23', 'altsayfa'),
-(8, 'Hakkımda', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit efficitur eros. Vivamus ut orci eu neque iaculis dapibus. Cras iaculis rhoncus justo. Nullam porta consectetur placerat. Morbi tincidunt mi non nulla iaculis bibendum. Donec auctor, mi nec vestibulum faucibus, est ligula viverra elit, et dignissim metus massa eget lorem.</p>\r\n', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '../img/dijital-hizmetler-500x500.png', 'yayinlandi', 'Hakkımda', 'Arı Bilgi | Hakkımda', '2022-03-05', 'ustsayfa');
+INSERT INTO `sayfalar` (`id`, `baslik`, `icerik`, `meta`, `foto`, `durum`, `fotoalt`, `seotitle`, `tarih`, `sayfaturu`, `kategori`) VALUES
+(1, 'Web Tasarım Hizmeti', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n', 'Kaliteli, Mobil Uyumlu Web Tasarım ve Kodlama Hizmeti için 7/24 Proje Üretimi.', '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'yayinlandi', 'Web Tasarım Hizmeti', 'Arı Bilişim | Web Tasarım Hizmeti', '2022-01-23', 'altsayfa', 'hizmet'),
+(2, 'Dijital Pazarlama Hizmeti', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\n\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\n\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\n\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\n\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\n', 'Dijital Pazarlama hizmetimiz ile Dijital Dünyada Her Zaman Görünür Olun.', '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'yayinlandi', 'Dijital Pazarlama Hizmeti', 'Arı Bilişim | Dijital Pazarlama Hizmeti', '2022-01-29', 'altsayfa', 'hizmet'),
+(3, 'Grafik Tasarım Hizmeti', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro odit molestias possimus nihil velit ipsam perspiciatis maiores et odio impedit blanditiis labore reiciendis adipisci laboriosam dolores placeat enim obcaecati aperiam, fugiat excepturi dicta laudantium error aspernatur ratione? Dicta amet dolorum reiciendis error neque a repellendus. Praesentium, sunt! Ut, odio expedita!</p>\r\n', 'Basılı ve Dijital Tasarımlarınız için Arı Bilişim Her Zaman Yanınızda', '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'yayinlandi', 'Grafik Tasarım Hizmeti', 'Arı Bilişim | Grafik Tasarım Hizmeti', '2022-01-23', 'altsayfa', 'hizmet'),
+(8, 'Hakkımda', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit efficitur eros. Vivamus ut orci eu neque iaculis dapibus. Cras iaculis rhoncus justo. Nullam porta consectetur placerat. Morbi tincidunt mi non nulla iaculis bibendum. Donec auctor, mi nec vestibulum faucibus, est ligula viverra elit, et dignissim metus massa eget lorem.</p>\r\n', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '../img/dijital-hizmetler-500x500.png', 'yayinlandi', 'Hakkımda', 'Arı Bilgi | Hakkımda', '2022-03-05', 'ustsayfa', 'standart');
 
 -- --------------------------------------------------------
 
@@ -246,9 +276,8 @@ INSERT INTO `sayfalar` (`id`, `baslik`, `icerik`, `meta`, `foto`, `durum`, `foto
 -- Tablo için tablo yapısı `yazilar`
 --
 
-DROP TABLE IF EXISTS `yazilar`;
-CREATE TABLE IF NOT EXISTS `yazilar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `yazilar` (
+  `id` int(11) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `baslik` varchar(150) NOT NULL,
   `icerik` text NOT NULL,
@@ -256,9 +285,8 @@ CREATE TABLE IF NOT EXISTS `yazilar` (
   `durum` varchar(11) NOT NULL,
   `kategori` varchar(50) NOT NULL,
   `seotitle` varchar(100) NOT NULL,
-  `tarih` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `tarih` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `yazilar`
@@ -277,17 +305,15 @@ INSERT INTO `yazilar` (`id`, `foto`, `baslik`, `icerik`, `meta`, `durum`, `kateg
 -- Tablo için tablo yapısı `yorumlar`
 --
 
-DROP TABLE IF EXISTS `yorumlar`;
-CREATE TABLE IF NOT EXISTS `yorumlar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `yorumlar` (
+  `id` int(11) NOT NULL,
   `adiniz` varchar(50) NOT NULL,
   `email` varchar(150) NOT NULL,
   `yorum` varchar(500) NOT NULL,
   `onay` varchar(10) NOT NULL,
   `yazino` int(11) NOT NULL,
-  `adminonay` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `adminonay` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `yorumlar`
@@ -300,6 +326,158 @@ INSERT INTO `yorumlar` (`id`, `adiniz`, `email`, `yorum`, `onay`, `yazino`, `adm
 (5, 'Yıldız Tilbe', 'tilbe@yildiz.com', 'Tebrikler çok güzel bir yazı.', 'true', 4, '1'),
 (7, 'Demet Akalın', 'akalin@demet.com', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aliquid, sunt modi provident alias, magni placeat officia dicta quo, similique ratione magnam cum sapiente quasi? Aliquid cum id placeat voluptatum quo unde sed officiis repudiandae possimus itaque harum, officia a omnis esse nisi consectetur quidem odio? Eligendi inventore explicabo vitae?', 'true', 3, '1'),
 (8, 'Merve Özbey', 'ozbey@merve.com', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt sapiente, earum enim corporis omnis natus. Vitae possimus earum ratione officia aperiam, temporibus eius recusandae libero, exercitationem dolor nostrum nemo labore?', 'true', 3, '1');
+
+--
+-- Dökümü yapılmış tablolar için indeksler
+--
+
+--
+-- Tablo için indeksler `ayarlar`
+--
+ALTER TABLE `ayarlar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `deneme`
+--
+ALTER TABLE `deneme`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `ebulten`
+--
+ALTER TABLE `ebulten`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `kategoriler`
+--
+ALTER TABLE `kategoriler`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `mesajlar`
+--
+ALTER TABLE `mesajlar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `ozellikler`
+--
+ALTER TABLE `ozellikler`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `reklam`
+--
+ALTER TABLE `reklam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `sayfalar`
+--
+ALTER TABLE `sayfalar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `yazilar`
+--
+ALTER TABLE `yazilar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `yorumlar`
+--
+ALTER TABLE `yorumlar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
+--
+
+--
+-- Tablo için AUTO_INCREMENT değeri `ayarlar`
+--
+ALTER TABLE `ayarlar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `deneme`
+--
+ALTER TABLE `deneme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `ebulten`
+--
+ALTER TABLE `ebulten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `kategoriler`
+--
+ALTER TABLE `kategoriler`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `mesajlar`
+--
+ALTER TABLE `mesajlar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `ozellikler`
+--
+ALTER TABLE `ozellikler`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `reklam`
+--
+ALTER TABLE `reklam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `sayfalar`
+--
+ALTER TABLE `sayfalar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `yazilar`
+--
+ALTER TABLE `yazilar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `yorumlar`
+--
+ALTER TABLE `yorumlar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
