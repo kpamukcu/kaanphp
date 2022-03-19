@@ -53,6 +53,7 @@ $yeni_yorum = $sorgu_yorum->fetchColumn();
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item text-dark" href="banner.php" >Banner Düzenle</a>
                   <a class="dropdown-item text-dark" href="ozellikler.php">Özellikler</a>
+                  <a class="dropdown-item text-dark" href="tanitim.php">Tanıtım Alanı</a>
                   <a class="dropdown-item text-dark" href="seoanaliz.php">Seo Analiz</a>
                 </div>
               </div>
