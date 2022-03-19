@@ -104,21 +104,26 @@ $satir_hakkimda = $sorgu_hakkimda->fetch();
 </section>
 <!-- Özellikler Section End -->
 
-<!-- Seo Önemi Section Start -->
-<section id="seoOnemi" class="py-5">
+<!-- Tanıtım Section Start -->
+<?php
+$sorgu_tanitim = $db -> prepare('select * from tanitim order by id desc limit 1');
+$sorgu_tanitim -> execute();
+$satir_tanitim = $sorgu_tanitim -> fetch();
+?>
+<section id="tanitim" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Buraya Başlık Gelecek</h2>
-                <p>Blog yazısının Özeti Gelecek</p>
+            <div class="col-md-6 my-auto">
+                <h2><?php echo $satir_tanitim['baslik']; ?></h2>
+                <p class="text-justify"><?php echo $satir_tanitim['icerik']; ?></p>
             </div>
             <div class="col-md-6">
-                Görsel gelecek
+                <video src="<?php echo substr($satir_tanitim['yayin'],3); ?>" controls class="w-100"></video>
             </div>
         </div>
     </div>
 </section>
-<!-- Seo Önemi Section End -->
+<!-- Tanıtım Section End -->
 
 <!-- Seo Analiz Section Start -->
 <section id="seoAnaliz" class="bg-purple py-5">

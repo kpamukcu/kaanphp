@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 19 Mar 2022, 11:20:23
+-- Üretim Zamanı: 19 Mar 2022, 12:45:16
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 7.4.27
 
@@ -288,7 +288,7 @@ CREATE TABLE `tanitim` (
 --
 
 INSERT INTO `tanitim` (`id`, `baslik`, `icerik`, `yayin`) VALUES
-(1, 'Seo\'nun Web Siteleri için Önemli', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat eveniet tenetur incidunt, numquam quod, voluptas, dolorem voluptate pariatur illum qui architecto porro autem maxime fugiat ipsa dicta animi provident. Praesentium, assumenda inventore nemo quis rerum harum rem ipsum itaque reprehenderit illum! Fugiat ipsum assumenda officia, laboriosam, est eos aperiam sapiente labore dolorum voluptatum consequuntur eligendi repellat facilis eius cumque, expedita omnis architecto adipisci vitae ', '../img/tanitim-video.mp4');
+(4, 'Seo\'nun Web Siteleri için Önemli', 'dsfdsfdsdsfsdafa', '../img/tanitim-video.mp4');
 
 -- --------------------------------------------------------
 
@@ -497,7 +497,7 @@ ALTER TABLE `sayfalar`
 -- Tablo için AUTO_INCREMENT değeri `tanitim`
 --
 ALTER TABLE `tanitim`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yazilar`
