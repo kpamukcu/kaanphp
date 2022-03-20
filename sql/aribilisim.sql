@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 19 Mar 2022, 12:45:16
+-- Üretim Zamanı: 20 Mar 2022, 12:30:18
 -- Sunucu sürümü: 10.4.22-MariaDB
 -- PHP Sürümü: 7.4.27
 
@@ -273,6 +273,28 @@ INSERT INTO `sayfalar` (`id`, `baslik`, `icerik`, `meta`, `foto`, `durum`, `foto
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `seoanaliz`
+--
+
+CREATE TABLE `seoanaliz` (
+  `id` int(11) NOT NULL,
+  `webadres` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `puan` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `seoanaliz`
+--
+
+INSERT INTO `seoanaliz` (`id`, `webadres`, `email`, `puan`) VALUES
+(1, 'www.aribilgi.com', 'kaan@gmail.com', 80),
+(2, 'www.onedio.com', 'onedio@gmail.com', 72),
+(3, 'www.hurriyet.com', 'hurriyet@gmail.com', 63);
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `tanitim`
 --
 
@@ -288,7 +310,7 @@ CREATE TABLE `tanitim` (
 --
 
 INSERT INTO `tanitim` (`id`, `baslik`, `icerik`, `yayin`) VALUES
-(4, 'Seo\'nun Web Siteleri için Önemli', 'dsfdsfdsdsfsdafa', '../img/tanitim-video.mp4');
+(5, 'Barış Manço - Aynalı Kemer', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id inventore voluptatibus soluta veniam sed accusamus debitis reprehenderit quo quidem perferendis et eos repellat, laudantium impedit sit in cupiditate. Sunt tenetur accusamus architecto ipsum, distinctio temporibus dolore laborum aut, deserunt laboriosam, hic quam corporis cum qui nemo eos asperiores illo exercitationem? Aperiam non, optio quisquam nam ut accusamus fuga qui laborum quibusdam temporibus dolorum perspiciatis amet at exerc', '../img/tanitim-video-2.mp4');
 
 -- --------------------------------------------------------
 
@@ -315,9 +337,10 @@ CREATE TABLE `yazilar` (
 INSERT INTO `yazilar` (`id`, `foto`, `baslik`, `icerik`, `meta`, `durum`, `kategori`, `seotitle`, `tarih`) VALUES
 (1, '../img/grafik-tasarim-hizmeti-330x220.jpg', 'Grafik Tasarımın İlkeleri', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Grafik Tasarımın İlkeleri', 'yayinlandi', 'Grafik Tasarım', 'Grafik Tasarımın İlkeleri', '2022-01-17'),
 (2, '../img/dijital-pazarlama-hizmeti-330x220.jpg', 'Python ile Yapay Zeka', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Python ile Yapay Zeka', 'yayinlandi', 'Yapay Zeka ', 'Python ile Yapay Zeka', '2022-01-17'),
-(3, '../img/web-tasarim-hizmeti-330x220.jpg', 'Web Tasarımda Dikkat Edilmesi Gerekenler', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Web Tasarımda Dikkat Edilmesi Gerekenler', 'yayinlandi', 'Web Tasarım', 'Web Tasarımda Dikkat Edilmesi Gerekenler', '2022-01-26'),
+(3, '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'Web Tasarımda Dikkat Edilmesi Gerekenler', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Web Tasarımda Dikkat Edilmesi Gerekenler', 'yayinlandi', 'Web Tasarım', 'Web Tasarımda Dikkat Edilmesi Gerekenler', '2022-01-26'),
 (4, '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'Seo için Dikkat Edilmesi Gerekenler', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Seo için Dikkat Edilmesi Gerekenler', 'yayinlandi', 'Dijital Pazarlama', 'Seo için Dikkat Edilmesi Gerekenler', '2022-01-19'),
-(6, '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'Bu ikinci Dijital Pazarlama Yazısı', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Lorem ipsum dolor sit amet consectetur', 'yayinlandi', 'Dijital Pazarlama', 'Yeni Yazı', '2022-02-27');
+(6, '../img/grafik-tasarim-hizmeti-1000x563.jpg', 'Bu ikinci Dijital Pazarlama Yazısı', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic possimus ex dolor? Aperiam aspernatur pariatur doloribus error numquam officia beatae impedit minus, adipisci hic atque ex molestias, similique fugiat.</p>\r\n', 'Lorem ipsum dolor sit amet consectetur', 'yayinlandi', 'Dijital Pazarlama', 'Yeni Yazı', '2022-02-27'),
+(7, '../img/yazi-foto.jpg', 'Kurumsal Site Tasarımı Nasıl Yapılır?', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium dolorum similique iusto expedita illum voluptate quasi at? Recusandae quia sequi eveniet cumque dignissimos quas, quidem consectetur! Velit quis labore nihil iure maxime commodi amet soluta! Veritatis numquam ratione voluptatum voluptatem magni nobis officiis at fuga fugit cupiditate odit molestias harum optio nulla qui debitis aliquid accusantium quidem minima error ex, eveniet praesentium in sunt? Iure sapiente, unde corrupti facere autem quam tenetur voluptas doloribus libero illo rerum temporibus placeat vero, debitis minus molestias error eligendi voluptate! Dolorem eos, fugit unde est ex iste a recusandae laudantium assumenda enim quia, atque velit quisquam ea quibusdam explicabo, officia pariatur perferendis rerum hic</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium dolorum similique iusto expedita illum voluptate quasi at? Recusandae quia sequi eveniet cumque dignissimos quas, quidem consectetur! Velit quis labore nihil iure maxime commodi amet soluta! Veritatis numquam ratione voluptatum voluptatem magni nobis officiis at fuga fugit cupiditate odit molestias harum optio nulla qui debitis aliquid accusantium quidem minima error ex, eveniet praesentium in sunt? Iure sapiente, unde corrupti facere autem quam tenetur voluptas doloribus libero illo rerum temporibus placeat vero, debitis minus molestias error eligendi voluptate! Dolorem eos, fugit unde est ex iste a recusandae laudantium assumenda enim quia, atque velit quisquam ea quibusdam explicabo, officia pariatur perferendis rerum hic</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium dolorum similique iusto expedita illum voluptate quasi at? Recusandae quia sequi eveniet cumque dignissimos quas, quidem consectetur! Velit quis labore nihil iure maxime commodi amet soluta! Veritatis numquam ratione voluptatum voluptatem magni nobis officiis at fuga fugit cupiditate odit molestias harum optio nulla qui debitis aliquid accusantium quidem minima error ex, eveniet praesentium in sunt? Iure sapiente, unde corrupti facere autem quam tenetur voluptas doloribus libero illo rerum temporibus placeat vero, debitis minus molestias error eligendi voluptate! Dolorem eos, fugit unde est ex iste a recusandae laudantium assumenda enim quia, atque velit quisquam ea quibusdam explicabo, officia pariatur perferendis rerum hic</p>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium dolorum similique iusto expedita illum voluptate quasi at? Recusandae quia sequi eveniet cumque dignissimos quas, quidem consectetur! Velit quis labore nihil iure maxime commodi amet soluta! Veritatis numquam ratione voluptatum voluptatem magni nobis officiis at fuga fugit cupiditate odit molestias harum optio nulla qui debitis aliquid accusantium quidem minima error ex, eveniet praesentium in sunt? Iure sapiente, unde corrupti facere autem quam tenetur voluptas doloribus libero illo rerum temporibus placeat vero, debitis minus molestias error eligendi voluptate! Dolorem eos, fugit unde est ex iste a recusandae laudantium assumenda enim quia, atque velit quisquam ea quibusdam explicabo, officia pariatur perferendis rerum hic</p>\r\n', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur accusantium', 'yayinlandi', 'Web Tasarım', 'Kurumsal Site Tasarımı Nasıl Yapılır?', '2022-03-20');
 
 -- --------------------------------------------------------
 
@@ -345,7 +368,8 @@ INSERT INTO `yorumlar` (`id`, `adiniz`, `email`, `yorum`, `onay`, `yazino`, `adm
 (4, 'Mehmet Aslantuğ', 'mehmet@mehmetaslantug.com', 'Başarılarınızın devamını dilerim her şey gönlünüzce olsun.', 'true', 1, '1'),
 (5, 'Yıldız Tilbe', 'tilbe@yildiz.com', 'Tebrikler çok güzel bir yazı.', 'true', 4, '1'),
 (7, 'Demet Akalın', 'akalin@demet.com', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aliquid, sunt modi provident alias, magni placeat officia dicta quo, similique ratione magnam cum sapiente quasi? Aliquid cum id placeat voluptatum quo unde sed officiis repudiandae possimus itaque harum, officia a omnis esse nisi consectetur quidem odio? Eligendi inventore explicabo vitae?', 'true', 3, '1'),
-(8, 'Merve Özbey', 'ozbey@merve.com', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt sapiente, earum enim corporis omnis natus. Vitae possimus earum ratione officia aperiam, temporibus eius recusandae libero, exercitationem dolor nostrum nemo labore?', 'true', 3, '1');
+(8, 'Merve Özbey', 'ozbey@merve.com', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt sapiente, earum enim corporis omnis natus. Vitae possimus earum ratione officia aperiam, temporibus eius recusandae libero, exercitationem dolor nostrum nemo labore?', 'true', 3, '1'),
+(9, 'Kaan', 'kaan@gmail.com', 'Bu Ekip Harika', 'true', 7, '1');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -409,6 +433,12 @@ ALTER TABLE `reklam`
 -- Tablo için indeksler `sayfalar`
 --
 ALTER TABLE `sayfalar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `seoanaliz`
+--
+ALTER TABLE `seoanaliz`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -494,22 +524,28 @@ ALTER TABLE `sayfalar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `seoanaliz`
+--
+ALTER TABLE `seoanaliz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `tanitim`
 --
 ALTER TABLE `tanitim`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yazilar`
 --
 ALTER TABLE `yazilar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yorumlar`
 --
 ALTER TABLE `yorumlar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
