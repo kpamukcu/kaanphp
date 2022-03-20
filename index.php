@@ -106,9 +106,9 @@ $satir_hakkimda = $sorgu_hakkimda->fetch();
 
 <!-- Tanıtım Section Start -->
 <?php
-$sorgu_tanitim = $db -> prepare('select * from tanitim order by id desc limit 1');
-$sorgu_tanitim -> execute();
-$satir_tanitim = $sorgu_tanitim -> fetch();
+$sorgu_tanitim = $db->prepare('select * from tanitim order by id desc limit 1');
+$sorgu_tanitim->execute();
+$satir_tanitim = $sorgu_tanitim->fetch();
 ?>
 <section id="tanitim" class="py-5">
     <div class="container">
@@ -118,7 +118,7 @@ $satir_tanitim = $sorgu_tanitim -> fetch();
                 <p class="text-justify"><?php echo $satir_tanitim['icerik']; ?></p>
             </div>
             <div class="col-md-6">
-                <video src="<?php echo substr($satir_tanitim['yayin'],3); ?>" controls class="w-100"></video>
+                <video src="<?php echo substr($satir_tanitim['yayin'], 3); ?>" controls class="w-100"></video>
             </div>
         </div>
     </div>
@@ -132,9 +132,14 @@ $satir_tanitim = $sorgu_tanitim -> fetch();
             <div class="col-6 mx-auto text-center">
                 <h3 class="text-white">Ücretsiz Seo Analizi</h3>
                 <form method="post" class="form-row">
-                    <div class="col-10">
+                    <div class="col-5">
                         <div class="form-group">
-                            <input type="text" name="webadres" class="form-control" placeholder="Web Sitenizin Adresiniz Girin">
+                            <input type="text" name="webadres" class="form-control" placeholder="Web Site Adresiniz">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="E-Posta Adresiniz">
                         </div>
                     </div>
                     <div class="col-2">
@@ -143,6 +148,23 @@ $satir_tanitim = $sorgu_tanitim -> fetch();
                         </div>
                     </div>
                 </form>
+
+                <?php
+                if ($_POST) {
+                    $webadres = $_POST['webadres'];
+                    $email = $_POST['email'];
+
+                    $sorgu_seoanaliz = $db->prepare('insert into seoanaliz(webadres,email) values(?,?)');
+                    $sorgu_seoanaliz->execute(array($webadres, $email));
+
+                    if ($sorgu_seoanaliz->rowCount()) {
+                        echo '<span class="text-white">Seo Analiz Talebiniz İletilmiştir. Analiz Sonucu Kısa Süre içinde Mail Adresinize Gönderilecektir.</span>';
+                    } else {
+                        echo '<span class="text-white">Sistemsel Bir hata Oluştu. Lütfen Daha Sonra Tekrar Deneyin</span>';
+                    }
+                }
+                ?>
+
             </div>
         </div>
     </div>
@@ -150,18 +172,31 @@ $satir_tanitim = $sorgu_tanitim -> fetch();
 <!-- Seo Analiz Section End -->
 
 <!-- Blog Section Start -->
+
 <section id="indexBlog" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <a href="" class="text-decoration-none text-dark">
-                    <div class="card">
-                        <img src="" alt="" class="card-img-top">
-                        <h3>Blog Yazısı Başlığı</h3>
-                        <small>Yayınlanma Tarihi: xxxx</small>
+            <?php
+
+            $sorgu_blog = $db->prepare('select * from yazilar order by id desc limit 3');
+            $sorgu_blog->execute();
+
+            if ($sorgu_blog->rowCount()) {
+                foreach ($sorgu_blog as $satir_blog) {
+            ?>
+                    <div class="col-md-4">
+                        <a href="sample.php?id=<?php echo $satir_blog['id']; ?>" class="text-decoration-none text-dark">
+                            <div class="card">
+                                <img src="<?php echo substr($satir_blog['foto'],3); ?>" alt="<?php echo $satir_blog['meta']; ?>" class="card-img-top">
+                                <h3 style="font-size:18px;"><?php echo $satir_blog['baslik']; ?></h3>
+                                <small>Yayınlanma Tarihi: <?php echo $satir_blog['tarih']; ?></small>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </section>

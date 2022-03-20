@@ -69,7 +69,7 @@
                 }
                 ?>
 
-                <a href=""><button class="btn btn-warning w-25">Düzenle</button></a>
+                <a href="tanitimduzenle.php?id=<?php echo $satir_yayin['id']; ?>"><button class="btn btn-warning w-25">Düzenle</button></a>
                 <a href="tanitim.php?id=<?php echo $satir_yayin['id']; ?>"><button class="btn btn-danger w-25">Sil</button></a>
 
                 <?php
