@@ -1,4 +1,10 @@
-<?php require_once('header.php'); ?>
+<?php
+require_once('header.php');
+$id = $_GET['id'];
+$sorgu_nitduzenle = $db->prepare('select * from ozellikler where id=? ');
+$sorgu_nitduzenle->execute(array($id));
+$satir_nitduzenle = $sorgu_nitduzenle->fetch();
+?>
 
 <!-- Özellikler Section Start -->
 <section id="adminOzellikler">
@@ -10,14 +16,14 @@
             <div class="col-md-6">
                 <form method="post">
                     <div class="form-group">
-                        <input type="text" name="baslik" class="form-control" placeholder="Özellik Başlığı Girin">
+                        <input type="text" name="baslik" class="form-control" value="<?php echo $satir_nitduzenle['baslik']; ?>">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="icerik" class="form-control" placeholder="Kısa Açıklama Girin">
+                        <input type="text" name="icerik" class="form-control" value="<?php echo $satir_nitduzenle['icerik']; ?>">
                     </div>
                     <div class="form-group">
                         <select name="ikon" class="form-control">
-                            <option value="">Seçiniz</option>
+                            <option value="<?php echo $satir_nitduzenle['ikon']; ?>">Önceki Kayıt</option>
                             <option value="<i class='bi bi-clock'></i>">7/24 Teknik Hizmet</option>
                             <option value="<i class='bi bi-speedometer'></i>">Hız ve Kalite</option>
                             <option value="<i class='bi bi-info-circle'></i>">Ücretsiz Danışmanlık</option>
@@ -34,11 +40,11 @@
                     $icerik = $_POST['icerik'];
                     $ikon = $_POST['ikon'];
 
-                    $sorgu = $db->prepare('insert into ozellikler(baslik,icerik,ikon) values(?,?,?)');
-                    $sorgu->execute(array($baslik, $icerik, $ikon));
+                    $sorgu_yeninit = $db->prepare('update ozellikler set baslik=?,icerik=?,ikon=? where id=?');
+                    $sorgu_yeninit->execute(array($baslik,$icerik,$ikon,$id));
 
-                    if ($sorgu->rowCount()) {
-                        echo '<div class="alert alert-success">Kayıt Girildi</div>';
+                    if($sorgu_yeninit -> rowCount()){
+                        echo '<div class="alert alert-success">Kayıt Güncellendi</div>';
                     } else {
                         echo '<div class="alert alert-danger">Hata Oluştu</div>';
                     }
