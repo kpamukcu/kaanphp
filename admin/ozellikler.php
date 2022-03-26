@@ -7,7 +7,7 @@
             <div class="col-12">
                 <h1>Özellikler Alanı Düzenleme</h1>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <form method="post">
                     <div class="form-group">
                         <input type="text" name="baslik" class="form-control" placeholder="Özellik Başlığı Girin">
@@ -44,6 +44,44 @@
                     }
                 }
                 ?>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Başlık</th>
+                            <th>İçerik</th>
+                            <th>İkon</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+
+                        $sorgu_nitelik = $db->prepare('select * from ozellikler order by id desc');
+                        $sorgu_nitelik->execute();
+
+                        if ($sorgu_nitelik->rowCount()) {
+                            foreach ($sorgu_nitelik as $satir_nitelik) {
+                        ?>
+                                <tr>
+                                    <td><?php echo $satir_nitelik['id']; ?></td>
+                                    <td><?php echo $satir_nitelik['baslik']; ?></td>
+                                    <td><?php echo $satir_nitelik['icerik']; ?></td>
+                                    <td><?php echo $satir_nitelik['ikon']; ?></td>
+                                    <td><a href=""><button class="btn btn-warning">Düzenle</button></a></td>
+                                    <td><a href=""><button class="btn btn-danger">Sil</button></a></td>
+                                </tr>
+                        <?php
+                            }
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -54,7 +54,7 @@
                 if ($sorgu_yayin->rowCount()) {
                     echo '<h4>' . $satir_yayin['baslik'] . '</h4>';
                     echo '<p>' . substr($satir_yayin['icerik'], 0, 100) . '</p>';
-                    echo ' <video src="' . $satir_yayin['yayin'] . '"controls class="w-100"></video>';
+                    echo '<img src="'.$satir_yayin['yayin'].'" alt="">';
                 } else {
                     echo '<p>Kayıt Bulununamadı</p>';
                 }
