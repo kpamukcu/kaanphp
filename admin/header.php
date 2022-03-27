@@ -77,7 +77,7 @@ $yeni_yorum = $sorgu_yorum->fetchColumn();
                 </div>
               </div>
             </li>
-
+            <li><a href="uyelist.php">Üye Listesi</a></li>
             <li><a href="logout.php">Çıkış</a></li>
           </ul>
         </div>
