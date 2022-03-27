@@ -37,7 +37,7 @@ if ($sorgu->rowCount()) {
   <section id="menu">
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-10">
           <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="index.php"><img src="<?php echo substr($logo, 3); ?>" alt="" class="img-fluid"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,6 +78,9 @@ if ($sorgu->rowCount()) {
               </ul>
             </div>
           </nav>
+        </div>
+        <div class="col-2 my-auto text-right">
+          <a href="uyeol.php" class="text-muted text-decoration-none"><small>Üye Ol</small></a>
         </div>
       </div>
     </div>
